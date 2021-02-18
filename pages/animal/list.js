@@ -1,5 +1,5 @@
-import { AnimalCard } from '../../components/animal-card'
 import Grid from '@material-ui/core/List';
+import { AnimalCard } from '../../components/animal-card';
 
 const animals = [{
     name: "Princesa",
@@ -12,7 +12,7 @@ const animals = [{
     name: "Gus",
     breed: "Criolla",
     gender: "Male",
-    isVaccinated: true,
+    isVaccinated: false,
     vaccines: ["rabia", "leucemia", "parvovirus", "Coronavirus"]
 }]
 
@@ -31,7 +31,7 @@ export default function ListAnimal() {
                             name={animal.name}
                             breed={animal.breed}
                             gender={animal.gender}
-                            isVaccinated={true}
+                            isVaccinated={animal.isVaccinated}
                             vaccines={animal.vaccines}
                         />
                     </Grid>)
