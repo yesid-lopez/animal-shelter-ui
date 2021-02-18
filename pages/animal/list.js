@@ -1,22 +1,27 @@
 import Grid from '@material-ui/core/List';
 import { AnimalCard } from '../../components/animal-card';
+import { AnimalController } from '../../controllers';
 
-const animals = [{
-    name: "Princesa",
-    breed: "Criolla",
-    gender: "Female",
-    isVaccinated: true,
-    vaccines: ["rabia", "leucemia", "parvovirus"]
-},
-{
-    name: "Gus",
-    breed: "Criolla",
-    gender: "Male",
-    isVaccinated: false,
-    vaccines: ["rabia", "leucemia", "parvovirus", "Coronavirus"]
-}]
 
-export default function ListAnimal() {
+export async function getStaticProps(context) {
+    const res = await AnimalController.list();
+    const animals = await res.data;
+    if (!animals) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        props: { animals }
+    }
+}
+
+export default function ListAnimal({ animals }) {
+
     return (
         < Grid
             container
@@ -25,8 +30,8 @@ export default function ListAnimal() {
             alignItems="center"
         >
             {
-                animals.map(animal =>
-                    <Grid container item xs={12} spacing={3}>
+                animals?.map(animal =>
+                    <Grid container xs={12} spacing={3}>
                         <AnimalCard
                             name={animal.name}
                             breed={animal.breed}
