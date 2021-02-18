@@ -1,9 +1,6 @@
 import { faHeart, faMars, faVenus, faVirus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +10,6 @@ import { VaccineList } from './vaccines-list';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
     },
 });
 
@@ -22,7 +18,7 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardContent>
                 <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
@@ -31,10 +27,13 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
                     title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={1}>
                         <Grid item xs={8}>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {name} • {breed}
+                            <Typography gutterBottom variant="h4" component="h2">
+                                {name}
+                            </Typography>
+                            <Typography gutterBottom variant="h6" component="h2">
+                                {breed}
                             </Typography>
                         </Grid>
                         <Grid item xs={2}>
@@ -46,15 +45,7 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
                     </Grid>
                     <VaccineList vaccines={vaccines} />
                 </CardContent>
-            </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary">
-                    Share
-                </Button>
-                <Button size="small" color="primary">
-                    Learn More
-                </Button>
-            </CardActions>
+            </CardContent>
         </Card >
     );
 }
