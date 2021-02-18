@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AnimalRegister() {
+export default function RegisterCat() {
   const classes = useStyles();
 
   // Select breeds
