@@ -22,7 +22,7 @@ export const VaccineList = ({ vaccines }) => {
     return (<List className={classes.root}>
 
         {vaccines.map(vaccine =>
-            <ListItem>
+            <ListItem key={vaccine}>
                 <ListItemAvatar>
                     <Avatar>
                         <FontAwesomeIcon icon={faCheckCircle} />
