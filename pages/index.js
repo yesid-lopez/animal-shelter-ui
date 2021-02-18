@@ -14,6 +14,9 @@ export default function Home() {
         <Link href="/animal/register">
           <a> Register animal</a>
         </Link>
+        <Link href="/animal/list">
+          <a> List Animal</a>
+        </Link>
       </main>
 
       <footer className={styles.footer}>
