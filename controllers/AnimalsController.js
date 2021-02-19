@@ -3,7 +3,7 @@ import axios from 'axios';
 export const AnimalController = {
     register(animal) {
         return axios({
-            url: `animals`,
+            url: `animal`,
             baseURL: process.env.API,
             data: animal,
             method: 'POST'
