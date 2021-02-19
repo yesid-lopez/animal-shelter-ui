@@ -1,21 +1,24 @@
-import React from "react";
+import { FormLabel } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Radio from "@material-ui/core/Radio";
-import { FormLabel } from "@material-ui/core";
-import FormGroup from "@material-ui/core/FormGroup";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Paper from "@material-ui/core/Paper";
+import Radio from "@material-ui/core/Radio";
+import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Router from 'next/router';
+import React from 'react';
+import { AnimalController } from '../../controllers';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,12 +39,6 @@ export default function RegisterCat() {
   const [gender, setGender] = React.useState("female");
   const handleChangeGender = (event) => {
     setGender(event.target.value);
-  };
-
-  // Radio Buttons isVaccinated
-  const [isVaccinated, setIsVaccinated] = React.useState("not-vaccinated");
-  const handleChangeIsVaccinated = (event) => {
-    setIsVaccinated(event.target.value);
   };
 
   // Checkboxes Vaccines
@@ -74,6 +71,24 @@ export default function RegisterCat() {
     setChecked(event.target.checked);
     isDisable = !isDisable;
   };
+
+  const registerAnimal = async event => {
+    event.preventDefault()
+    const vaccines = []
+    for (const vac in vaccine) {
+      if (!vaccines.includes(vac) && vaccine[vac]) vaccines.push(vac)
+    }
+    const animal = {
+      name: event.target["cat-name"].value,
+      breed: breed,
+      gender: gender,
+      isVaccinated: !vaccine["ninguna"],
+      vaccines: vaccines,
+    }
+    await AnimalController.register(animal)
+
+    Router.push("/animal/list")
+  }
 
   return (
     <Grid container component="main" style={{ height: "100vh" }}>
@@ -111,7 +126,7 @@ export default function RegisterCat() {
           <Typography component="h1" variant="h5">
             Registro de Gatos
           </Typography>
-          <form noValidate style={{ width: "100%", marginTop: "8px" }}>
+          <form onSubmit={registerAnimal} noValidate style={{ width: "100%", marginTop: "8px" }}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -135,6 +150,7 @@ export default function RegisterCat() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
+              name="breed"
               value={breed}
               onChange={handleChange}
               style={{ minWidth: "120px" }}
@@ -164,8 +180,8 @@ export default function RegisterCat() {
                   <Radio
                     checked={gender === "female"}
                     onChange={handleChangeGender}
-                    value="female"
-                    name="radio-button-demo"
+                    value="Female"
+                    name="gender"
                   />
                 }
                 label="Hembra"
@@ -176,8 +192,8 @@ export default function RegisterCat() {
                     color="primary"
                     checked={gender === "male"}
                     onChange={handleChangeGender}
-                    value="male"
-                    name="radio-button-demo"
+                    value="Male"
+                    name="gender"
                   />
                 }
                 label="Macho"
