@@ -36,7 +36,7 @@ export default function RegisterCat() {
   };
 
   // Radio Buttons Gender
-  const [gender, setGender] = React.useState("female");
+  const [gender, setGender] = React.useState("Female");
   const handleChangeGender = (event) => {
     setGender(event.target.value);
   };
@@ -178,7 +178,7 @@ export default function RegisterCat() {
               <FormControlLabel
                 control={
                   <Radio
-                    checked={gender === "female"}
+                    checked={gender === "Female"}
                     onChange={handleChangeGender}
                     value="Female"
                     name="gender"
@@ -190,7 +190,7 @@ export default function RegisterCat() {
                 control={
                   <Radio
                     color="primary"
-                    checked={gender === "male"}
+                    checked={gender === "Male"}
                     onChange={handleChangeGender}
                     value="Male"
                     name="gender"
