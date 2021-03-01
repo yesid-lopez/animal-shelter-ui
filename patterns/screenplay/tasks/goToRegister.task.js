@@ -1,11 +1,9 @@
+import Task from './../task';
+import { HOME_ELEMENTS } from '../pageobjects/home.element';
 export class GoToRegister extends Task {
 
-    constructor(){
-        super();
-    }
-    executeAs(actor){
-        const registerSelector = Selector('a').withText('Register animal');
-        this.testController.click(registerSelector);
+    async executeAs(actor) {
+        await this.testController.click(HOME_ELEMENTS.registerButton);
         return actor;
     }
 }

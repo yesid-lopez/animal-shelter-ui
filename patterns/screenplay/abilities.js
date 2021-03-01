@@ -19,14 +19,11 @@ export class Abilities {
         return this.excecutingTasks(tasks);
     }
 
-    excecutingTasks(...tasks) {
+    async excecutingTasks(...tasks) {
         const arrayTasks = tasks.flat();
-
-        arrayTasks.forEach(() => new Task(this.testController).executeAs(this.actor));
-
-        // for (const Task of arrayTasks) {
-        // new Task().executaComo(this.agente);
-        // }
+        for (const Task of arrayTasks) {
+            await new Task(this.testController).executeAs(this.actor);
+        }
     }
 }
 
