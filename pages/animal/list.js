@@ -9,14 +9,7 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
         padding: theme.spacing(2)
-    },
-    paper: {
-        height: 140,
-        width: 100,
-    },
-    control: {
-        padding: theme.spacing(2),
-    },
+    }
 }))
 
 export default function ListAnimal({ animals }) {

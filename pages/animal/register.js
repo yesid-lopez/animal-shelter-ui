@@ -18,15 +18,21 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Router from 'next/router';
 import React from 'react';
 import { AnimalController } from '../../controllers';
+import useSWR from 'swr';
+import { AnimalCard } from '../../components/animal-card';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
   },
+  list: {
+    flexGrow: 1,
+    padding: theme.spacing(2)
+  },
 }));
 
-export default function RegisterCat() {
+export default function RegisterCat({ animals }) {
   const classes = useStyles();
 
   // Select breeds
@@ -48,7 +54,6 @@ export default function RegisterCat() {
     leucemia: false,
     peritonitisInfecciosa: false,
     rabia: false,
-    ninguna: true,
   });
 
   const handleChangeVaccines = (event) => {
@@ -61,7 +66,6 @@ export default function RegisterCat() {
     leucemia,
     peritonitisInfecciosa,
     rabia,
-    ninguna,
   } = vaccine;
 
   // Terms and conditions
@@ -82,19 +86,22 @@ export default function RegisterCat() {
       name: event.target["cat-name"].value,
       breed: breed,
       gender: gender,
-      isVaccinated: !vaccine["ninguna"],
+      isVaccinated: vaccines.length > 0,
       vaccines: vaccines,
     }
     await AnimalController.register(animal)
 
-    Router.push("/animal/list")
+    window.location.reload();
   }
+
+  // Animal list
+  const { data } = useSWR('/animal', AnimalController.list)
+  animals = data?.data;
 
   return (
     <Grid container component="main" style={{ height: "100vh" }}>
       <CssBaseline />
-      <Grid
-        item
+      <Grid item
         xs={false}
         sm={4}
         md={7}
@@ -104,8 +111,28 @@ export default function RegisterCat() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
-        }}
-      />
+        }}>
+        <div className={classes.list}>
+          <Grid container justify="center" className={classes.list} spacing={2}>
+            <Grid item xs={12}>
+              <Grid container justify="center" alignItems="stretch" spacing={2}>
+                {animals ? animals.map(animal => (
+                  <Grid key={animal} item xs={4}>
+                    <AnimalCard
+                      name={animal.name}
+                      breed={animal.breed}
+                      gender={animal.gender}
+                      isVaccinated={animal.isVaccinated}
+                      vaccines={animal.vaccines}
+                    />
+                  </Grid>
+                )) : ""}
+              </Grid>
+            </Grid>
+          </Grid>
+        </div >
+      </Grid>
+
 
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div
@@ -263,28 +290,18 @@ export default function RegisterCat() {
                   }
                   label="Rabia"
                 />
-
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={ninguna}
-                      onChange={handleChangeVaccines}
-                      name="ninguna"
-                    />
-                  }
-                  label="Ninguna"
-                />
               </FormGroup>
             </div>
             <div style={{ marginTop: "16px" }}>
               <FormControlLabel
                 control={
                   <Checkbox
+                    id="terms-and-condition"
                     checked={checked}
                     onChange={handleChangeTermsConditions}
                   />
                 }
-                label="Acepto términos y condiciones"
+                label="Acepto Términos y Condiciones"
               />
             </div>
             <Button
