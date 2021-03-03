@@ -15,20 +15,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Router from 'next/router';
 import React from 'react';
 import { AnimalController } from '../../controllers';
-import useSWR from 'swr';
-import { AnimalCard } from '../../components/animal-card';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
-  },
-  list: {
-    flexGrow: 1,
-    padding: theme.spacing(2)
-  },
+  }
 }));
 
 export default function RegisterCat({ animals }) {
@@ -90,12 +85,8 @@ export default function RegisterCat({ animals }) {
     }
     await AnimalController.register(animal)
 
-    window.location.reload();
+    Router.push("/animal/list")
   }
-
-  // Animal list
-  const { data } = useSWR('/animal', AnimalController.list)
-  animals = data?.data;
 
   return (
     <Grid container component="main" style={{ height: "100vh" }}>
@@ -111,25 +102,6 @@ export default function RegisterCat({ animals }) {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}>
-        <div className={classes.list}>
-          <Grid container justify="center" className={classes.list} spacing={2}>
-            <Grid item xs={12}>
-              <Grid container justify="center" alignItems="stretch" spacing={2}>
-                {animals ? animals.map(animal => (
-                  <Grid key={animal} item xs={4}>
-                    <AnimalCard
-                      name={animal.name}
-                      breed={animal.breed}
-                      gender={animal.gender}
-                      isVaccinated={animal.isVaccinated}
-                      vaccines={animal.vaccines}
-                    />
-                  </Grid>
-                )) : ""}
-              </Grid>
-            </Grid>
-          </Grid>
-        </div >
       </Grid>
 
 
