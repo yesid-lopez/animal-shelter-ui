@@ -1,5 +1,3 @@
-import { faHeart, faMars, faVenus, faVirus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -7,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { VaccineList } from './vaccines-list';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles({
     root: {
@@ -37,10 +36,29 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
                             </Typography>
                         </Grid>
                         <Grid item xs={2}>
-                            {gender == "Male" ? <FontAwesomeIcon icon={faMars} /> : <FontAwesomeIcon icon={faVenus} />}
+                            {gender == "Male" ?
+                                <Avatar
+                                    variant="square"
+                                    src="/icons/icons8-male-96.png"
+                                    style={{ width: "30px", height: "30px" }} />
+                                :
+                                <Avatar variant="square"
+                                    src="/icons/icons8-female-96.png"
+                                    style={{ width: "30px", height: "30px" }} />
+                            }
                         </Grid>
                         <Grid item xs={2}>
-                            {isVaccinated ? <FontAwesomeIcon icon={faHeart} /> : <FontAwesomeIcon icon={faVirus} />}
+                            {isVaccinated ?
+                            <Avatar
+                            variant="square"
+                            src="/icons/icons8-health-80.png"
+                            style={{ width: "30px", height: "30px" }} />
+                            : 
+                            <Avatar
+                            variant="square"
+                            src="/icons/icons8-virus-80.png"
+                            style={{ width: "30px", height: "30px" }} />
+                            }
                         </Grid>
                     </Grid>
                     <VaccineList vaccines={vaccines} />

@@ -15,7 +15,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Router from 'next/router';
 import React from 'react';
 import { AnimalController } from '../../controllers';
 import useSWR from 'swr';

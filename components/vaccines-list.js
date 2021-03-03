@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const VaccineList = ({ vaccines }) => {
     const classes = useStyles();
-
+    
     return (<List className={classes.root}>
 
         {vaccines.map(vaccine =>
