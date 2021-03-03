@@ -33,10 +33,12 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
                 <Avatar
                   variant="square"
                   src="/icons/icons8-male-96.png"
+                  name="male-icon"
                   style={{ width: "30px", height: "30px" }} />
                 :
                 <Avatar variant="square"
                   src="/icons/icons8-female-96.png"
+                  name="female-icon"
                   style={{ width: "30px", height: "30px" }} />
               }
             </Grid>
@@ -45,11 +47,13 @@ export const AnimalCard = ({ name, breed, gender, isVaccinated, vaccines }) => {
                 <Avatar
                   variant="square"
                   src="/icons/icons8-health-80.png"
+                  name="health-icon"
                   style={{ width: "30px", height: "30px" }} />
                 :
                 <Avatar
                   variant="square"
                   src="/icons/icons8-virus-80.png"
+                  name="unhealthy-icon"
                   style={{ width: "30px", height: "30px" }} />
               }
             </Grid>
