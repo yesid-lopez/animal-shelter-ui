@@ -16,6 +16,4 @@ test('Enter register page', async testController => {
 
     await testController.expect(registerTitle.visible).ok();
 
-    await testController.debug();
-
 });

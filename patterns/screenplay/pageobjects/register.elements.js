@@ -6,7 +6,7 @@ export const REGISTER_ELEMENTS = {
     simpleSelectBreed: Selector("#demo-simple-select"),
     catBreed: Selector(`[data-value="Azul Ruso"]`),
     femaleOption: Selector('[value="Female"]'),
-    checkboxTerms: Selector(`span`).withText("Acepto términos y condiciones"),
+    checkboxTerms: Selector(`span`).withText("Acepto Términos y Condiciones"),
     submitButton: Selector(`button[type="submit"]`),
     animalCard: Selector('.MuiTypography-root').withText('Garfield')
 
