@@ -29,7 +29,6 @@ export class JsonServerHandler {
 
     private attachSocketEvents(): void {
         this._httpServer.on('connection', socket => {
-            console.log('connectioon');
             const socketKey = ++this._lastSocketKey;
             this._socketMap[socketKey] = socket;
             socket.on('close', () => {

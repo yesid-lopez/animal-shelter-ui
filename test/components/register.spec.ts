@@ -5,11 +5,6 @@ import { REGISTER_ELEMENTS } from '../../patterns/screenplay/pageobjects/registe
 const server = new JsonServerHandler();
 
 server.jsonServer.post('/animal', (req, res) => {
-    console.log('hii');
-    res.send();
-});
-
-server.jsonServer.get('/animals', (req, res) => {
     res.send();
 });
 
@@ -35,14 +30,10 @@ test('Enter register page', async testController => {
 
     await testController.expect(registerTitle.visible).ok();
 
-    // await testController.debug();
-
     await testController.typeText(REGISTER_ELEMENTS.petNameField, 'Garfield')
         .click(REGISTER_ELEMENTS.simpleSelectBreed)
         .click(REGISTER_ELEMENTS.catBreed)
         .click(REGISTER_ELEMENTS.checkboxTerms)
         .click(REGISTER_ELEMENTS.submitButton);
-
-    await testController.debug();
 
 });
