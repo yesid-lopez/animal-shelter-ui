@@ -276,6 +276,7 @@ export default function RegisterCat({ animals }) {
               />
             </div>
             <Button
+              data-testid="register-button"
               type="submit"
               fullWidth
               variant="contained"
