@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "e2e:chrome": "testcafe chrome ./test/e2e/*.spec.js",
-    "components:chrome": "testcafe chrome ./test/components/*.spec.ts"
+    "components:chrome": "testcafe chrome ./test/components/*.spec.*"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
