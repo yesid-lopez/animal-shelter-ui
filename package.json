@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test:e2e": "testcafe chrome ./test/*.spec.js",
+    "test:e2e:headless": "testcafe chrome ./test/*.spec.js",
     "build": "next build",
     "start": "next start -p $PORT",
     "e2e:chrome": "testcafe chrome ./test/e2e/*.spec.js",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "json-server": "^0.16.3",
+    "faker": "^5.4.0",
     "testcafe": "^1.11.0"
   }
 }
