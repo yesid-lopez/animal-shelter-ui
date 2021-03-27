@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "test:e2e": "testcafe chrome ./test/*.spec.js",
-    "test:e2e:headless": "testcafe chrome ./test/*.spec.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "build": "next build",
     "start": "next start -p $PORT"
   },
@@ -22,7 +22,13 @@
     "swr": "^0.4.2"
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.30.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
     "faker": "^5.4.0",
-    "testcafe": "^1.11.0"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0"
   }
 }
