@@ -6,6 +6,7 @@
     "dev": "next dev",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:component": "jest --testPathPattern=./test/component/",
     "build": "next build",
     "start": "next start -p $PORT"
   },
