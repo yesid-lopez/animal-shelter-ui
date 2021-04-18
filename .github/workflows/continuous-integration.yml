@@ -22,4 +22,10 @@ jobs:
         node-version: 12
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - name: Run component tests
+      run: npm run test:component
+    - name: Run contract tests
+      run: npm run test:contract
+      env:
+        API: http://localhost:8080
+

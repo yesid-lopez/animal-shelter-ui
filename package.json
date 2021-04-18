@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "test": "jest",
+    "test": "npm run test:component && npm run test:contract",
     "test:watch": "jest --watch",
     "test:component": "jest --testPathPattern=./test/component/",
+    "test:contract": "jest --testPathPattern=./test/contract/ --runInBand",
     "build": "next build",
     "start": "next start -p $PORT"
   },
@@ -17,12 +18,14 @@
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "swr": "^0.4.2"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^9.15.4",
     "@testing-library/dom": "^7.30.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
