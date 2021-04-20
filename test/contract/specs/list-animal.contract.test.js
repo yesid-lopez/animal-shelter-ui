@@ -1,21 +1,12 @@
-const {Pact, Matchers} = require('@pact-foundation/pact');
-const path = require('path');
-const {AnimalController} = require('../../../controllers/AnimalsController');
-
-const provider = new Pact({
-    consumer: 'AnimalShelterFront',
-    provider: 'AnimalShelterBack',
-    port: 8080,
-    cors: true,
-    log: path.resolve(process.cwd(), './test/contract/logs', 'pact.log'),
-    dir: path.resolve(process.cwd(), './test/contract/pacts'),
-    logLevel: 'INFO'
-});
+import {Matchers} from '@pact-foundation/pact';
+import {AnimalController} from '../../../controllers';
+import {provider} from '../config/initPact';
 
 describe('Animal Service', () => {
     describe('When a request to list all animals is made', () => {
-        beforeAll(() => provider.setup().then(() => {
-            provider.addInteraction({
+        beforeAll(async () => {
+            await provider.setup();
+            await provider.addInteraction({
                 uponReceiving: 'a request to list all animals',
                 withRequest: {
                     method: 'GET',
@@ -42,12 +33,11 @@ describe('Animal Service', () => {
                     )
                 }
             });
-        }));
+        });
 
         test('should return the correct data', async () => {
             const response = await AnimalController.list();
-            expect(response.data[0].name).toBe('manchas');
-            expect(response.data[0].breed).toBe('Bengali');
+            expect(response.data).toMatchSnapshot();
         });
 
         afterEach(() => provider.verify());

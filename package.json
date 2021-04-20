@@ -4,10 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "test": "npm run test:component && npm run test:contract",
-    "test:watch": "jest --watch",
-    "test:component": "jest --testPathPattern=./test/component/",
-    "test:contract": "jest --testPathPattern=./test/contract/ --runInBand",
+    "test:component": "jest -c test/component/jest.config.component.js",
+    "test:contract": "jest -c test/contract/jest.config.contract.js",
     "build": "next build",
     "start": "next start -p $PORT"
   },
