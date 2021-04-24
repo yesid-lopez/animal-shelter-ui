@@ -1,0 +1,113 @@
+I, [2021-04-23T20:38:54.045078 #8353]  INFO -- : Registered expected interaction GET /animals
+D, [2021-04-23T20:38:54.046836 #8353] DEBUG -- : {
+  "description": "a request to get all animals",
+  "providerState": "there are animals",
+  "request": {
+    "method": "GET",
+    "path": "/animals"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "json_class": "Pact::ArrayLike",
+      "contents": {
+        "breed": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Bengali"
+        },
+        "gender": {
+          "json_class": "Pact::Term",
+          "data": {
+            "generate": "Female",
+            "matcher": {
+              "json_class": "Regexp",
+              "o": 0,
+              "s": "Female|Male"
+            }
+          }
+        },
+        "isVaccinated": {
+          "json_class": "Pact::SomethingLike",
+          "contents": true
+        },
+        "name": {
+          "json_class": "Pact::SomethingLike",
+          "contents": "Manchas"
+        },
+        "vaccines": {
+          "json_class": "Pact::ArrayLike",
+          "contents": [
+            "rabia"
+          ],
+          "min": 1
+        }
+      },
+      "min": 1
+    }
+  },
+  "metadata": null
+}
+I, [2021-04-23T20:38:54.071635 #8353]  INFO -- : Received request GET /animals
+D, [2021-04-23T20:38:54.071758 #8353] DEBUG -- : {
+  "path": "/animals",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.5.1",
+    "Accept-Language": "en",
+    "Origin": "http://localhost",
+    "Host": "localhost:8090",
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2021-04-23T20:38:54.071962 #8353]  INFO -- : Found matching response for GET /animals
+D, [2021-04-23T20:38:54.072081 #8353] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "json_class": "Pact::ArrayLike",
+    "contents": {
+      "breed": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Bengali"
+      },
+      "gender": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "Female",
+          "matcher": {
+            "json_class": "Regexp",
+            "o": 0,
+            "s": "Female|Male"
+          }
+        }
+      },
+      "isVaccinated": {
+        "json_class": "Pact::SomethingLike",
+        "contents": true
+      },
+      "name": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Manchas"
+      },
+      "vaccines": {
+        "json_class": "Pact::ArrayLike",
+        "contents": [
+          "rabia"
+        ],
+        "min": 1
+      }
+    },
+    "min": 1
+  }
+}
+I, [2021-04-23T20:38:54.090643 #8353]  INFO -- : Verifying - interactions matched
+I, [2021-04-23T20:38:54.093105 #8353]  INFO -- : Cleared interactions
+I, [2021-04-23T20:38:54.096126 #8353]  INFO -- : Writing pact for AnimalShelterBack to /Users/laurahincapie/animal-shelter-ui/test/contract/pacts/animalshelterfront-animalshelterback.json

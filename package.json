@@ -6,6 +6,7 @@
     "dev": "next dev",
     "test:component": "jest -c test/component/jest.component.config.js",
     "test:contract": "jest -c test/contract/jest.contract.config.js",
+    "test:publish": "node test/contract/publish.js",
     "test:watch": "jest --watch",
     "build": "next build",
     "start": "next start -p $PORT"

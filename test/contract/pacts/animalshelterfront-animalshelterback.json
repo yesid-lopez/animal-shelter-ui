@@ -1,0 +1,68 @@
+{
+  "consumer": {
+    "name": "AnimalShelterFront"
+  },
+  "provider": {
+    "name": "AnimalShelterBack"
+  },
+  "interactions": [
+    {
+      "description": "a request to get all animals",
+      "providerState": "there are animals",
+      "request": {
+        "method": "GET",
+        "path": "/animals"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": [
+          {
+            "breed": "Bengali",
+            "gender": "Female",
+            "isVaccinated": true,
+            "name": "Manchas",
+            "vaccines": [
+              [
+                "rabia"
+              ]
+            ]
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          },
+          "$.body[*].breed": {
+            "match": "type"
+          },
+          "$.body[*].gender": {
+            "match": "regex",
+            "regex": "Female|Male"
+          },
+          "$.body[*].isVaccinated": {
+            "match": "type"
+          },
+          "$.body[*].name": {
+            "match": "type"
+          },
+          "$.body[*].vaccines": {
+            "min": 1
+          },
+          "$.body[*].vaccines[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
