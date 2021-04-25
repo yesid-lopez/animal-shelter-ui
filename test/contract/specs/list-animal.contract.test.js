@@ -1,6 +1,7 @@
 import { provider } from "./init-pact";
 import { AnimalController } from "../../../controllers";
 import { Matchers } from "@pact-foundation/pact";
+import { } from '@pact-foundation/pact'; 
 
 describe('Given an Animal Service', () => {
     describe('When a request to list all the animals is made', () => {
