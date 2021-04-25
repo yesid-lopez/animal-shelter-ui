@@ -18,18 +18,12 @@ describe('Animal Service', () => {
                         {
                             name: Matchers.like('manchas'),
                             breed: Matchers.like("Bengali"),
-                            gender: Matchers.term(
-                                {generate: "Female", matcher: "Female|Male"}
-                            ),
-                            isVaccinated: Matchers.boolean(true),
+                            gender: Matchers.like("Female"),
+                            vaccinated: Matchers.boolean(true),
                             vaccines: Matchers.eachLike(
-                                [
-                                    "rabia", "leucemia", "parvovirus"
-                                ],
-                                {min: 1}
+                                Matchers.like("Rabia")
                             )
-                        },
-                        {min: 2}
+                        }
                     )
                 }
             });

@@ -5,27 +5,10 @@ Array [
   Object {
     "breed": "Bengali",
     "gender": "Female",
-    "isVaccinated": true,
     "name": "manchas",
+    "vaccinated": true,
     "vaccines": Array [
-      Array [
-        "rabia",
-        "leucemia",
-        "parvovirus",
-      ],
-    ],
-  },
-  Object {
-    "breed": "Bengali",
-    "gender": "Female",
-    "isVaccinated": true,
-    "name": "manchas",
-    "vaccines": Array [
-      Array [
-        "rabia",
-        "leucemia",
-        "parvovirus",
-      ],
+      "Rabia",
     ],
   },
 ]
