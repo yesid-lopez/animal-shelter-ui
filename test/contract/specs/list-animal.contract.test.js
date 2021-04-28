@@ -8,7 +8,7 @@ describe('Given an Animal Service', () => {
         beforeAll(async () => {
             await provider.setup();
             await provider.addInteraction({
-                state: 'there are animals',
+                state: 'has animals',
                 uponReceiving: 'a request to get all animals',
                 withRequest: {
                     method: 'GET',
@@ -19,12 +19,9 @@ describe('Given an Animal Service', () => {
                     body: Matchers.eachLike(
                         {
                             breed: Matchers.like("Bengali"),
-                            gender: Matchers.term(
-                                {generate:"Female", matcher:"Female|Male"}
-                            ),
-                            isVaccinated: Matchers.boolean(true),
+                            gender: Matchers.like("Female"),
                             name: Matchers.string("Manchas"),
-                            vaccines: Matchers.eachLike(["rabia"], {min: 1})
+                            vaccinated: Matchers.boolean(true)
                         },
                         {min: 1}
                     )

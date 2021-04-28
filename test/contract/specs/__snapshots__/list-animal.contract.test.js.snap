@@ -5,13 +5,8 @@ Array [
   Object {
     "breed": "Bengali",
     "gender": "Female",
-    "isVaccinated": true,
     "name": "Manchas",
-    "vaccines": Array [
-      Array [
-        "rabia",
-      ],
-    ],
+    "vaccinated": true,
   },
 ]
 `;
