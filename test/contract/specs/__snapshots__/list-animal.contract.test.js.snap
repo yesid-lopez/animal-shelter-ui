@@ -7,9 +7,6 @@ Array [
     "gender": "Female",
     "name": "manchas",
     "vaccinated": true,
-    "vaccines": Array [
-      "Rabia",
-    ],
   },
 ]
 `;

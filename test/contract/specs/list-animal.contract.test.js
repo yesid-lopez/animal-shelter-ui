@@ -8,6 +8,7 @@ describe('Animal Service', () => {
             await provider.setup();
             await provider.addInteraction({
                 uponReceiving: 'a request to list all animals',
+                state: "has animals",
                 withRequest: {
                     method: 'GET',
                     path: '/animals'
@@ -19,10 +20,7 @@ describe('Animal Service', () => {
                             name: Matchers.like('manchas'),
                             breed: Matchers.like("Bengali"),
                             gender: Matchers.like("Female"),
-                            vaccinated: Matchers.boolean(true),
-                            vaccines: Matchers.eachLike(
-                                Matchers.like("Rabia")
-                            )
+                            vaccinated: Matchers.boolean(true)
                         }
                     )
                 }
