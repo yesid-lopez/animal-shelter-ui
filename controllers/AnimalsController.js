@@ -16,6 +16,7 @@ export const AnimalController = {
             url: 'animals'
         });
     },
+    // TODO CHECK THIS
     delete(animalName) {
         return axios({
             method: 'DELETE',
