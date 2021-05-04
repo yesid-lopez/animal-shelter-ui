@@ -15,6 +15,13 @@ export const AnimalController = {
             baseURL: process.env.API,
             url: 'animals'
         });
+    },
+    delete(animalName) {
+        return axios({
+            method: 'DELETE',
+            baseURL: process.env.API,
+            url: `animals/${animalName}`
+        });
     }
 }
 
