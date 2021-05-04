@@ -14,8 +14,8 @@ describe('Given an Animal Service', () => {
                     path: '/animals/Manchas'
                 },
                 willRespondWith: {
-                    status: 200,
-                    body: ''
+                    status: 204,
+                    // Empty body 204 - no content
                 }
             });
         });
