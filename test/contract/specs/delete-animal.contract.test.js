@@ -1,6 +1,5 @@
 import { getProvider } from "./init-pact";
 import { AnimalController } from "../../../controllers";
-import { Matchers } from "@pact-foundation/pact";
 
 const provider = getProvider();
 describe('Given an Animal Service', () => {
