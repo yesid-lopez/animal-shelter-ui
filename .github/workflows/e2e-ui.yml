@@ -27,3 +27,4 @@ jobs:
         with:
           wait-on: "https://animal-shelter-back.herokuapp.com/animals"
           browser: chrome
+          
