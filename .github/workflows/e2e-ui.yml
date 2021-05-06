@@ -1,0 +1,30 @@
+name: E2E UI Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout e2e ui repo
+        uses: actions/checkout@v2
+        with:
+          repository: leonleo997/animal-shelter-e2e-ui-tests
+      - name: use node.js 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - name: install dependencies
+        run: npm ci
+      - name: execute e2e ui tests
+        env:
+          CYPRESS_BASE_URL: "https://animal-shelter-ui.herokuapp.com/"
+        uses: cypress-io/github-action@v2
+        with:
+          wait-on: "https://animal-shelter-back.herokuapp.com/animals"
+          browser: chrome
+          
