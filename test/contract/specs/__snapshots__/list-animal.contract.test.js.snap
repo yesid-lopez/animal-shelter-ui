@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Given an Animal Service When a request to delete animals is made Then it should return the right data 1`] = `""`;
-
 exports[`Given an Animal Service When a request to list all the animals is made Then it should return the right data 1`] = `
 Array [
   Object {
