@@ -13,10 +13,16 @@ describe('Given an Animal Service', () => {
                 uponReceiving: 'a request to create an animal',
                 withRequest: {
                     method: 'POST',
-                    path: '/animals'
+                    path: '/animals',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
                 },
                 willRespondWith: {
                     status: 201,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: Matchers.somethingLike(
                         {
                             breed: Matchers.like("Bengali"),
