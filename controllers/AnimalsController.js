@@ -3,7 +3,7 @@ import axios from 'axios';
 export const AnimalController = {
     register(animal) {
         return axios({
-            url: `animal`,
+            url: `animals`,
             baseURL: process.env.API,
             data: animal,
             method: 'POST'
@@ -16,7 +16,6 @@ export const AnimalController = {
             url: 'animals'
         });
     },
-    // TODO CHECK THIS
     delete(animalName) {
         return axios({
             method: 'DELETE',

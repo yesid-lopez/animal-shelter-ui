@@ -13,7 +13,7 @@ describe('Given an Animal Service', () => {
                 uponReceiving: 'a request to create an animal',
                 withRequest: {
                     method: 'POST',
-                    path: '/animal'
+                    path: '/animals'
                 },
                 willRespondWith: {
                     status: 201,
