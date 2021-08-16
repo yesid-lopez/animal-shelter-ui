@@ -289,7 +289,7 @@ export default function RegisterCat({ animals }) {
                 marginRight: "16px",
               }}
             >
-              REGISTRAR
+              Guardar
             </Button>
           </form>
         </div>
