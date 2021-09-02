@@ -125,6 +125,7 @@ export default function RegisterCat({ animals }) {
           </Typography>
           <form onSubmit={registerAnimal} noValidate style={{ width: "100%", marginTop: "8px" }}>
           <Button
+              data-testid="register-button"
               type="submit"
               fullWidth
               variant="contained"
@@ -137,7 +138,7 @@ export default function RegisterCat({ animals }) {
                 marginRight: "16px",
               }}
             >
-              Guardar
+              Crear
             </Button>
             <TextField
               variant="outlined"
