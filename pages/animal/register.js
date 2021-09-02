@@ -124,22 +124,7 @@ export default function RegisterCat({ animals }) {
             Registro de Gatos
           </Typography>
           <form onSubmit={registerAnimal} noValidate style={{ width: "100%", marginTop: "8px" }}>
-            <Button
-              data-testid="register-button"
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              disabled={!checked}
-              style={{
-                marginTop: "16px",
-                marginBottom: "24px",
-                marginLeft: "0px",
-                marginRight: "16px",
-              }}
-            >
-              Crear
-            </Button>
+          
             <TextField
               variant="outlined"
               margin="normal"
@@ -290,7 +275,21 @@ export default function RegisterCat({ animals }) {
                 label="Acepto Términos y Condiciones"
               />
             </div>
-            
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              disabled={!checked}
+              style={{
+                marginTop: "16px",
+                marginBottom: "24px",
+                marginLeft: "0px",
+                marginRight: "16px",
+              }}
+            >
+              Guardar
+            </Button>
           </form>
         </div>
       </Grid>
