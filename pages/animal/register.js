@@ -280,6 +280,7 @@ export default function RegisterCat({ animals }) {
               fullWidth
               variant="contained"
               color="primary"
+              data-testid="register-button"
               disabled={!checked}
               style={{
                 marginTop: "16px",
