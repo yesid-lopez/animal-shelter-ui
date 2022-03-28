@@ -17,7 +17,7 @@ test('The register component shows the title, the cat input field, the breed dro
   expect(screen.getByRole('checkbox', { name: /peritonitis infecciosa felina/i })).toBeInTheDocument();
   expect(screen.getByRole('checkbox', { name: /rabia/i })).toBeInTheDocument();
   expect(screen.getByRole('checkbox', { name: /acepto términos y condiciones/i })).toBeInTheDocument();
-  expect(screen.getByText(/registrar/i)).toBeInTheDocument();
+  expect(screen.getByText(/guardar/i)).toBeInTheDocument();
 });
 
 test('The female option should be checked by default', () => {
